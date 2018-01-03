@@ -7,13 +7,14 @@
     <version>1.0.0-SNAPSHOT</version>
     <packaging>mule</packaging>
 	<name>Mule firstsample Application</name>
-
+	
     <properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-
 		<mule.version>3.8.4</mule.version>
     	<mule.tools.version>1.2</mule.tools.version>
+    	<mule.munit.support.version>3.8.4</mule.munit.support.version>
+    	<munit.version>1.3.3</munit.version>
 	</properties>
 
 	<build>
@@ -78,6 +79,7 @@
 			<groupId>org.mule.transports</groupId>
 			<artifactId>mule-transport-file</artifactId>
 			<version>${mule.version}</version>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.mule.transports</groupId>
@@ -129,12 +131,24 @@
             <version>${mule.version}</version>
             <scope>provided</scope>
         </dependency>
-    <dependency>
+    	<dependency>
             <groupId>org.mule.modules</groupId>
             <artifactId>mule-module-http</artifactId>
             <version>${mule.version}</version>
             <scope>provided</scope>
         </dependency>
+    	<dependency>
+			<groupId>com.mulesoft.munit</groupId>
+			<artifactId>mule-munit-support</artifactId>
+			<version>${mule.munit.support.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.mulesoft.munit</groupId>
+			<artifactId>munit-runner</artifactId>
+			<version>${munit.version}</version>
+			<scope>test</scope>
+		</dependency>
     </dependencies>
 
 	<repositories>
