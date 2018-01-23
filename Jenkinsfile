@@ -20,7 +20,8 @@ stage('Build')
 steps
 {
  echo 'Build is Starting'
- 
+  echo "PATH = ${PATH}"
+  echo "MAVEN_HOME = ${M2_HOME}/conf/settings.xml"
  sh 'mvn -B -DskipTests clean package'
  
  echo 'Build Completed'
