@@ -9,8 +9,8 @@ stage('Checkout')
  steps 
  { 
  
- checkout([$class: 'GitSCM', branches: [[name: '*/CICD_Test']],
-     userRemoteConfigs: [[credentialsId: '9d379816-40aa-43ff-9f6c-8015f4936219'],[url: 'https://github.com/whitbread-costa-retail/cm-x-sendgrid-api.git']]])
+ checkout([$class: 'GitSCM', branches: [[name: '*/develop']],
+     userRemoteConfigs: [[credentialsId: '9d379816-40aa-43ff-9f6c-8015f4936219'],[url: 'https://github.com/cr-dev2/dev_cicd2.git']]])
  echo 'Hello World' 
  } 
  } 
