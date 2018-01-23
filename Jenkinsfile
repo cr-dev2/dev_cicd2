@@ -14,7 +14,12 @@ stage('Checkout')
  echo 'Hello World' 
  } 
  }
-
+stage('Initialise')
+{
+M2_HOME="/home/ubuntu/maven/"
+export M2_HOME
+PATH=$PATH:$M2_HOME/bin
+}
 stage('Build')
 {
 steps
