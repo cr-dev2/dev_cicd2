@@ -15,20 +15,14 @@ stage('Checkout')
  } 
  }
  
-stage('Initialise')
-{
-steps 
- { 
-	sh 'export M2_HOME="/home/ubuntu/maven/"'
-}
-}
+
 stage('Build')
 {
 steps
 {
  echo 'Build is Starting'
  
- sh 'mvn -X -B -DskipTests clean package'
+ sh 'mvn -U -B -DskipTests clean package'
  
  echo 'Build Completed'
 }
