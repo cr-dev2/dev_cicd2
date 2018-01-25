@@ -43,23 +43,24 @@ steps
 
 stage('SIT')
 {
-steps
-{
 input {
                 message "Should we continue?"
                 ok "Yes, we should."
                 submitter "Bala"
                 parameters {
-                    string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+                    string(name: 'Status', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
                 }
             }
+            steps {
+                echo "${Status} received"
+            }
             
-}
+
 }
 
 
  
-} 
+}
 } 
  
  
