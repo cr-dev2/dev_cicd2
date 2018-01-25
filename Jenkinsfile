@@ -22,7 +22,7 @@ steps
 {
  echo 'Build is Starting'
  
- sh 'mvn -U install'
+ sh 'mvn -U install -DskipTests=true'
  
  echo 'Build Completed'
 }
