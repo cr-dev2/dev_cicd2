@@ -22,11 +22,13 @@ pipeline {
         echo 'Tests are Completed'
       }
     }
-    stage('Sonar QG Analysis') {
-      agent any
+	stage('sonar quality gate') {
       steps {
+	  withSonarQubeEnv('SonarServer-Local') {
+       sh 'mvn org.jacoco:jacoco-maven-plugin:prepare-agent -Dmule.verbose.exceptions=true org.sonarsource.scanner.maven:sonar-maven-plugin:3.2:sonar:sonar -Dsonar.login=$SONAR_UN -Dsonar.password=$SONAR_PASS -Dsonar.projectKey=DEV_CICD2 -Dsonar.projectName=DEV_CICD2 -Dsonar.projectVersion=1.0 -Dsonar.java.binaries=target/classes'
         waitForQualityGate()
       }
     }
+  }
   }
 }
