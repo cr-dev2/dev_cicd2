@@ -45,11 +45,15 @@ stage('SIT')
 {
 steps
 {
- echo 'SIT triggered are Starting'
- echo 'Unit Tests are passing, please do a SIT and confirm the status here '
- input:
- 
- echo 'Tests are Completed'
+input {
+                message "Should we continue?"
+                ok "Yes, we should."
+                submitter "Bala"
+                parameters {
+                    string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+                }
+            }
+            
 }
 }
 
