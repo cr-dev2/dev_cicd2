@@ -22,7 +22,7 @@ steps
 {
  echo 'Build is Starting'
  
- sh 'mvn -U -B -DskipTests clean package'
+ sh 'mvn -U -B'
  
  echo 'Build Completed'
 }
