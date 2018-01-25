@@ -41,6 +41,13 @@ steps
 }
 }
 
+stage('sonar quality gate')
+{
+steps
+{
+sh 'mvn org.jacoco:jacoco-maven-plugin:prepare-agent -Dmule.verbose.exceptions=true sonar:sonar'
+}
+}
 
 
 
