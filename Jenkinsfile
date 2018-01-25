@@ -45,7 +45,8 @@ stage('sonar quality gate')
 {
 steps
 {
-sh 'mvn org.jacoco:jacoco-maven-plugin:prepare-agent -Dmule.verbose.exceptions=true sonar:sonar'
+sh 'mvn org.jacoco:jacoco-maven-plugin:prepare-agent -Dmule.verbose.exceptions=true sonar:sonar -Dsonar.login=$SONAR_UN -Dsonar.password=$SONAR_PASS -Dsonar.projectKey=DEV_CICD2 -Dsonar.projectName=DEV_CICD2 -Dsonar.projectVersion=1.0 -Dsonar.sources=src/main/java,src/main/app
+-Dsonar.java.binaries=target/classes'
 }
 }
 
