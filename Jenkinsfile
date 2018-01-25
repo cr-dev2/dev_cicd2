@@ -27,6 +27,8 @@ steps
  echo 'Build Completed'
 }
 }
+
+
 stage('unit Test')
 {
 steps
@@ -38,6 +40,20 @@ steps
  echo 'Tests are Completed'
 }
 }
+
+stage('SIT')
+{
+steps
+{
+ echo 'SIT triggered are Starting'
+ echo 'Unit Tests are passing, please do a SIT and confirm the status here '
+ input:
+ 
+ echo 'Tests are Completed'
+}
+}
+
+
  
 } 
 } 
