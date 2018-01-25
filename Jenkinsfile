@@ -22,13 +22,24 @@ steps
 {
  echo 'Build is Starting'
  
- sh 'mvn -U -B'
+ sh 'mvn -U install'
  
  echo 'Build Completed'
 }
 }
+stage('unit Test')
+{
+steps
+{
+ echo 'Tests are Starting'
  
- } 
+ sh 'mvn test'
+ 
+ echo 'Tests are Completed'
+}
+}
+ 
+} 
 } 
  
  
