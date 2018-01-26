@@ -3,19 +3,19 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.mycompany</groupId>
-	<artifactId>firstsample</artifactId>
+	<artifactId>cicdeautodeployproj</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>mule</packaging>
-	<name>Mule firstsample Application</name>
-	
+	<name>Mule cicdeautodeployproj Application</name>
+
     <properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<mule.version>3.8.4</mule.version>
+
+		<mule.version>3.8.5</mule.version>
     	<mule.tools.version>1.2</mule.tools.version>
-    	<mule.munit.support.version>3.8.5</mule.munit.support.version>
-    	<munit.version>1.3.6</munit.version>
-    	<cloudhub.domain>firstsample.eu.cloudhub.io</cloudhub.domain>    	
+    	
+    	<cloudhub.domain>cicdautodeployproj.eu.cloudhub.io</cloudhub.domain>
 	</properties>
 
 	<build>
@@ -56,53 +56,6 @@
 					</execution>
 				</executions>
 			</plugin>
-		<plugin>
-                <groupId>com.mulesoft.munit.tools</groupId>
-                <artifactId>munit-maven-plugin</artifactId>
-                <version>${munit.version}</version>
-                <executions>
-                    <execution>
-                        <id>test</id>
-                        <phase>test</phase>
-                        <goals>
-                            <goal>test</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <coverage>
-                        <runCoverage>true</runCoverage>
-                        <formats>
-                            <format>html</format>
-                        </formats>
-                    </coverage>
-                </configuration>
-            </plugin>
-            <plugin>
-			    <groupId>org.mule.tools.appkit</groupId>
-			    <artifactId>mule-maven-plugin</artifactId>
-			    <version>3.8.4</version>
-			    <extensions>true</extensions>
-				<configuration>
-                 <deploymentType>cloudhub</deploymentType>
-                 <username>ShiveshGupta</username>
-                 <password>L@ughter@1</password>
-                 <redeploy>true</redeploy>
-                 <environment>Production</environment>
-             </configuration>
-			    <executions>
-			        <execution>
-			            <phase>deploy</phase>
-			            <goals>
-			                <goal>deploy</goal>
-			            </goals>
-			            <configuration>
-			                <domain>${cloudhub.domain}</domain>
-			                <maxWaitTime>180000</maxWaitTime>
-			            </configuration>
-			        </execution>
-			    </executions>
-			</plugin>
 			<plugin>
 			    <groupId>org.mule.tools.appkit</groupId>
 			    <artifactId>mule-appkit-maven-plugin</artifactId>
@@ -121,16 +74,21 @@
 			        </execution>
 			    </executions>
 			</plugin>
-        </plugins>
-	<testResources>
-            <testResource>
-                <directory>src/test/munit</directory>
-            </testResource>
-        <testResource>
-                <directory>src/test/resources</directory>
-            </testResource>
-        </testResources>
-    </build>
+		</plugins>
+	</build>
+	
+	<distributionManagement>
+	    <repository>
+	        <id>localSnap</id>
+	        <name>cicdeautodeployproj-1.0.0-SNAPSHOT</name>
+	        <url>file:///C:\temp\</url>
+	    </repository>
+	    <!-- <snapshotRepository>
+	        <id>MylocalSnap</id>
+	        <name>cicdeautodeployproj-1.0.0-SNAPSHOT</name>
+	        <url>file:///C:\Users\bbasa\AnypointStudio\workspace\cicdeautodeployproj\target\</url>
+	    </snapshotRepository>-->
+	</distributionManagement>
 
 	<!-- Mule Dependencies -->
 	<dependencies>
@@ -153,6 +111,7 @@
 			<groupId>org.mule.transports</groupId>
 			<artifactId>mule-transport-file</artifactId>
 			<version>${mule.version}</version>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.mule.transports</groupId>
@@ -200,58 +159,34 @@
 		</dependency>
 	<dependency>
             <groupId>org.mule.modules</groupId>
-            <artifactId>mule-module-spring-config</artifactId>
-            <version>${mule.version}</version>
-            <scope>provided</scope>
-        </dependency>
-    	<dependency>
-            <groupId>org.mule.modules</groupId>
             <artifactId>mule-module-http</artifactId>
             <version>${mule.version}</version>
             <scope>provided</scope>
         </dependency>
-    	<dependency>
-			<groupId>com.mulesoft.munit</groupId>
-			<artifactId>mule-munit-support</artifactId>
-			<version>${mule.munit.support.version}</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.mulesoft.munit</groupId>
-			<artifactId>munit-runner</artifactId>
-			<version>${munit.version}</version>
-			<scope>test</scope>
-		</dependency>
+    <dependency>
+            <groupId>org.mule.modules</groupId>
+            <artifactId>mule-module-spring-config</artifactId>
+            <version>${mule.version}</version>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 
 	<repositories>
-        <repository>
-            <id>mulesoft-releases-3</id>
-            <name>MuleSoft Releases Repository</name>
-            <url>https://repository.mulesoft.org/nexus/content/repositories/releases/</url>
+          <repository>
+            <id>Central</id>
+            <name>Central</name>
+            <url>http://repo1.maven.org/maven2/</url>
             <layout>default</layout>
-        </repository>	
+        </repository>
         <repository>
             <id>mulesoft-releases</id>
             <name>MuleSoft Releases Repository</name>
             <url>http://repository.mulesoft.org/releases/</url>
             <layout>default</layout>
         </repository>
-        <repository>
-            <id>Central</id>
-            <name>Central</name>
-            <url>http://repo1.maven.org/maven2/</url>
-            <layout>default</layout>
-        </repository>        
-	    <repository>
-            <id>mulesoft-releases-2</id>
-            <name>MuleSoft Releases Repository</name>
-            <url>https://repository-master.mulesoft.org/nexus/content/groups/public/</url>
-            <layout>default</layout>
-        </repository>
     </repositories>
     <pluginRepositories>
-        <pluginRepository>
+        <!--<pluginRepository>
             <id>mulesoft-release</id>
             <name>mulesoft release repository</name>
             <layout>default</layout>
@@ -259,7 +194,17 @@
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>
-        </pluginRepository>
+        </pluginRepository>-->
+        <pluginRepository>
+		    <id>mulesoft-releases</id>
+		    <name>MuleSoft Release Repository</name>
+		    <url>http://repository.mulesoft.org/releases/</url>
+		  </pluginRepository>
+		  <pluginRepository>
+		    <id>mulesoft-snapshots</id>
+		    <name>MuleSoft Snapshot Repository</name>
+		    <url>http://repository.mulesoft.org/snapshots/</url>
+		  </pluginRepository>
     </pluginRepositories>
-   
+
 </project>
