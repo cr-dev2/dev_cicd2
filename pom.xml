@@ -80,14 +80,21 @@
             </plugin>
             <plugin>
 			    <groupId>org.mule.tools.appkit</groupId>
-			    <artifactId>mule-appkit-maven-plugin</artifactId>
-			    <version>3.4</version>
+			    <artifactId>mule-maven-plugin</artifactId>
+			    <version>3.8.4</version>
 			    <extensions>true</extensions>
+				<configuration>
+                 <deploymentType>cloudhub</deploymentType>
+                 <username>ShiveshGupta</username>
+                 <password>L@ughter@1</password>
+                 <redeploy>true</redeploy>
+                 <environment>Production</environment>
+             </configuration>
 			    <executions>
 			        <execution>
 			            <phase>deploy</phase>
 			            <goals>
-			                <goal>cloudhub-deploy</goal>
+			                <goal>deploy</goal>
 			            </goals>
 			            <configuration>
 			                <domain>${cloudhub.domain}</domain>
@@ -236,16 +243,5 @@
             </snapshots>
         </pluginRepository>
     </pluginRepositories>
-    <distributionManagement>
-	    <repository>
-	        <id>localSnap</id>
-	        <name>firstsample-1.0.0-SNAPSHOT</name>
-	        <url>file:///C:\temp\</url>
-	    </repository>
-	    <snapshotRepository>
-	        <id>MylocalSnap</id>
-	        <name>cicdeautodeployproj-1.0.0-SNAPSHOT</name>
-	        <url>file:///C:\Users\bbasa\AnypointStudio\workspace\firstsample\target\</url>
-	    </snapshotRepository>
-	</distributionManagement>
+   
 </project>
