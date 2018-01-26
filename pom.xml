@@ -103,6 +103,24 @@
 			        </execution>
 			    </executions>
 			</plugin>
+			<plugin>
+			    <groupId>org.mule.tools.appkit</groupId>
+			    <artifactId>mule-appkit-maven-plugin</artifactId>
+			    <version>3.4</version>
+			    <extensions>true</extensions>
+			    <executions>
+			        <execution>
+			            <phase>deploy</phase>
+			            <goals>
+			                <goal>cloudhub-deploy</goal>
+			            </goals>
+			            <configuration>
+			                <domain>${cloudhub.domain}</domain>
+			                <maxWaitTime>180000</maxWaitTime>
+			            </configuration>
+			        </execution>
+			    </executions>
+			</plugin>
         </plugins>
 	<testResources>
             <testResource>
