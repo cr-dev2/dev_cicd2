@@ -1,78 +1,43 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.mycompany</groupId>
 	<artifactId>cicdeautodeployproj</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
-    <packaging>mule</packaging>
+	<version>1.0.0-SNAPSHOT</version>
+	<packaging>mule</packaging>
 	<name>Mule cicdeautodeployproj Application</name>
 
-    <properties>
+	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
 		<mule.version>3.8.4</mule.version>
-    	<mule.tools.version>1.2</mule.tools.version>
-    	
-    	<cloudhub.domain>cicdautodeployproj.eu.cloudhub.io</cloudhub.domain>
+		<mule.tools.version>1.2</mule.tools.version>
+
+		<cloudhub.domain>devcicdautodeployproj.eu.cloudhub.io</cloudhub.domain>
 	</properties>
 
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.mule.tools.maven</groupId>
-				<artifactId>cloudhub-maven-plugin</artifactId>
-				<version>1.0</version>
-			    <configuration>
-			        <muleVersion>3.8.4</muleVersion>
-			        <application>cicdeautodeployproj:1.0.0-SNAPSHOT.zip</application>
-			    </configuration>
-			    <executions>
-			        <execution>
-			            <id>deploy</id>
-			            <phase>deploy</phase>
-			            <goals>
-			                <goal>deploy</goal>
-			            </goals>
-			        </execution>
-			    </executions>
+				<artifactId>mule-app-maven-plugin</artifactId>
+				<version>1.1</version>
+				<extensions>true</extensions>
 			</plugin>
-			<plugin>
-				<groupId>org.mule.tools.maven</groupId>
-				<artifactId>cloudhub-maven-plugin</artifactId>
-				<version>1.0</version>
-			    <configuration>
-			        <muleVersion>3.8.4</muleVersion>
-			    </configuration>
-			    <executions>
-			        <execution>
-			            <id>deploy</id>
-			            <phase>deploy</phase>
-			            <goals>
-			                <goal>deploy</goal>
-			            </goals>
-			        </execution>
-			    </executions>
-			</plugin>
-		
 			<plugin>
 				<groupId>org.mule.tools.maven</groupId>
 				<artifactId>mule-maven-plugin</artifactId>
-				<version>${mule.tools.version}</version>
-				<extensions>true</extensions>
-                <configuration>
+				<version>2.0</version>
+				<configuration>
 					<deploymentType>cloudhub</deploymentType>
-					<username>ShiveshGupta</username>
-					<password>L@ughter@1</password>
-					<redeploy>true</redeploy>
-					<uri>https://anypoint.mulesoft.com/cloudhub/#/console/home/applications/cloudhub/cicddev2/
-					</uri>
-					<environment>Production</environment>
 					<muleVersion>3.8.4</muleVersion>
-					<workers>1</workers>
-					<applicationName>cicdeautodeployproj-1.0.0-SNAPSHOT<!--  --></applicationName>
-					<copyToAppsDirectory>true</copyToAppsDirectory>
+					<username>bbalahm</username>
+					<password>Ww@1234</password>
+					<redeploy>true</redeploy>
+					<environment>Sandbox</environment>
 				</configuration>
 				<executions>
 					<execution>
@@ -111,46 +76,27 @@
 					</execution>
 				</executions>
 			</plugin>
-			<!--  
-			<plugin>
-			    <groupId>org.mule.tools.appkit</groupId>
-			    <artifactId>mule-appkit-maven-plugin</artifactId>
-			    <version>3.8</version>
-			    <extensions>true</extensions>
-			    <executions>
-			        <execution>
-			            <phase>deploy</phase>
-			            <goals>
-			                <goal>cloudhub-deploy</goal>
-			            </goals>
-			            <configuration>
-			                <domain>${cloudhub.domain}</domain>
-			                <maxWaitTime>180000</maxWaitTime>
-			            </configuration>
-			        </execution>
-			    </executions>
-			</plugin>-->
+			<!-- <plugin> <groupId>org.mule.tools.appkit</groupId> <artifactId>mule-appkit-maven-plugin</artifactId> 
+				<version>3.8</version> <extensions>true</extensions> <executions> <execution> 
+				<phase>deploy</phase> <goals> <goal>cloudhub-deploy</goal> </goals> <configuration> 
+				<domain>${cloudhub.domain}</domain> <maxWaitTime>180000</maxWaitTime> </configuration> 
+				</execution> </executions> </plugin> -->
 		</plugins>
 	</build>
-	
+
 	<distributionManagement>
-	    <repository>
-	        <id>localSnap</id>
-	        <name>cicdeautodeployproj-1.0.0-SNAPSHOT</name>
-	        <url>file:///C:\temp\</url>
-	    </repository>
-	    <!-- <snapshotRepository>
-	        <id>MylocalSnap</id>
-	        <name>cicdeautodeployproj-1.0.0-SNAPSHOT</name>
-	        <url>file:///C:\Users\bbasa\AnypointStudio\workspace\cicdeautodeployproj\target\</url>
-	    </snapshotRepository>-->
+		<repository>
+			<id>localSnap</id>
+			<name>cicdeautodeployproj-1.0.0-SNAPSHOT</name>
+			<url>file:///C:\temp\</url>
+		</repository>
 	</distributionManagement>
 
 	<!-- Mule Dependencies -->
 	<dependencies>
 		<!-- Xml configuration -->
 		<dependency>
-        	<groupId>com.mulesoft.muleesb</groupId>
+			<groupId>com.mulesoft.muleesb</groupId>
 			<artifactId>mule-core-ee</artifactId>
 			<version>${mule.version}</version>
 			<scope>provided</scope>
@@ -176,13 +122,13 @@
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-        	<groupId>com.mulesoft.muleesb.transports</groupId>
+			<groupId>com.mulesoft.muleesb.transports</groupId>
 			<artifactId>mule-transport-jdbc-ee</artifactId>
 			<version>${mule.version}</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-        	<groupId>com.mulesoft.muleesb.transports</groupId>
+			<groupId>com.mulesoft.muleesb.transports</groupId>
 			<artifactId>mule-transport-jms-ee</artifactId>
 			<version>${mule.version}</version>
 			<scope>provided</scope>
@@ -213,54 +159,48 @@
 			<version>${mule.version}</version>
 			<scope>test</scope>
 		</dependency>
-	<dependency>
-            <groupId>org.mule.modules</groupId>
-            <artifactId>mule-module-http</artifactId>
-            <version>${mule.version}</version>
-            <scope>provided</scope>
-        </dependency>
-    <dependency>
-            <groupId>org.mule.modules</groupId>
-            <artifactId>mule-module-spring-config</artifactId>
-            <version>${mule.version}</version>
-            <scope>provided</scope>
-        </dependency>
-    </dependencies>
+		<dependency>
+			<groupId>org.mule.modules</groupId>
+			<artifactId>mule-module-http</artifactId>
+			<version>${mule.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mule.modules</groupId>
+			<artifactId>mule-module-spring-config</artifactId>
+			<version>${mule.version}</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
 
 	<repositories>
-          <repository>
-            <id>Central</id>
-            <name>Central</name>
-            <url>http://repo1.maven.org/maven2/</url>
-            <layout>default</layout>
-        </repository>
-        <repository>
-            <id>mulesoft-releases</id>
-            <name>MuleSoft Releases Repository</name>
-            <url>http://repository.mulesoft.org/releases/</url>
-            <layout>default</layout>
-        </repository>
-    </repositories>
-    <pluginRepositories>
-        <!--<pluginRepository>
-            <id>mulesoft-release</id>
-            <name>mulesoft release repository</name>
-            <layout>default</layout>
-            <url>http://repository.mulesoft.org/releases/</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </pluginRepository>-->
-        <pluginRepository>
-		    <id>mulesoft-releases</id>
-		    <name>MuleSoft Release Repository</name>
-		    <url>http://repository.mulesoft.org/releases/</url>
-		  </pluginRepository>
-		  <pluginRepository>
-		    <id>mulesoft-snapshots</id>
-		    <name>MuleSoft Snapshot Repository</name>
-		    <url>http://repository.mulesoft.org/snapshots/</url>
-		  </pluginRepository>
-    </pluginRepositories>
+		<repository>
+			<id>Central</id>
+			<name>Central</name>
+			<url>http://repo1.maven.org/maven2/</url>
+			<layout>default</layout>
+		</repository>
+		<repository>
+			<id>mulesoft-releases</id>
+			<name>MuleSoft Releases Repository</name>
+			<url>http://repository.mulesoft.org/releases/</url>
+			<layout>default</layout>
+		</repository>
+	</repositories>
+	<pluginRepositories>
+		<!--<pluginRepository> <id>mulesoft-release</id> <name>mulesoft release 
+			repository</name> <layout>default</layout> <url>http://repository.mulesoft.org/releases/</url> 
+			<snapshots> <enabled>false</enabled> </snapshots> </pluginRepository> -->
+		<pluginRepository>
+			<id>mulesoft-releases</id>
+			<name>MuleSoft Release Repository</name>
+			<url>http://repository.mulesoft.org/releases/</url>
+		</pluginRepository>
+		<pluginRepository>
+			<id>mulesoft-snapshots</id>
+			<name>MuleSoft Snapshot Repository</name>
+			<url>http://repository.mulesoft.org/snapshots/</url>
+		</pluginRepository>
+	</pluginRepositories>
 
 </project>

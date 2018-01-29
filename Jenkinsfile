@@ -22,7 +22,7 @@ pipeline {
         echo 'Tests are Completed'
       }
     }
-	stage('sonar quality gate') {
+	stage('CloudHub Auto-Deploy') {
       steps {
 		echo 'CloudHub Auto-Deploy Starting'
         sh 'mvn deploy'
