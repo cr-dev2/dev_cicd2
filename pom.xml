@@ -12,7 +12,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-		<mule.version>3.8.5</mule.version>
+		<mule.version>3.8.4</mule.version>
     	<mule.tools.version>1.2</mule.tools.version>
     	
     	<cloudhub.domain>cicdautodeployproj.eu.cloudhub.io</cloudhub.domain>
@@ -22,12 +22,67 @@
 		<plugins>
 			<plugin>
 				<groupId>org.mule.tools.maven</groupId>
+				<artifactId>cloudhub-maven-plugin</artifactId>
+				<version>1.0</version>
+			    <configuration>
+			        <muleVersion>3.8.4</muleVersion>
+			        <application>cicdeautodeployproj:1.0.0-SNAPSHOT.zip</application>
+			    </configuration>
+			    <executions>
+			        <execution>
+			            <id>deploy</id>
+			            <phase>deploy</phase>
+			            <goals>
+			                <goal>deploy</goal>
+			            </goals>
+			        </execution>
+			    </executions>
+			</plugin>
+			<plugin>
+				<groupId>org.mule.tools.maven</groupId>
+				<artifactId>cloudhub-maven-plugin</artifactId>
+				<version>1.0</version>
+			    <configuration>
+			        <muleVersion>3.8.4</muleVersion>
+			    </configuration>
+			    <executions>
+			        <execution>
+			            <id>deploy</id>
+			            <phase>deploy</phase>
+			            <goals>
+			                <goal>deploy</goal>
+			            </goals>
+			        </execution>
+			    </executions>
+			</plugin>
+		
+			<plugin>
+				<groupId>org.mule.tools.maven</groupId>
 				<artifactId>mule-app-maven-plugin</artifactId>
 				<version>${mule.tools.version}</version>
 				<extensions>true</extensions>
-				<configuration>
-                    <copyToAppsDirectory>true</copyToAppsDirectory>
+                <configuration>
+					<deploymentType>cloudhub</deploymentType>
+					<username>ShiveshGupta</username>
+					<password>L@ughter@1</password>
+					<redeploy>true</redeploy>
+					<uri>https://anypoint.mulesoft.com/cloudhub/#/console/home/applications/cloudhub/cicddev2/
+					</uri>
+					<environment>Production</environment>
+					<muleVersion>3.8.4</muleVersion>
+					<workers>1</workers>
+					<applicationName>cicdeautodeployproj-1.0.0-SNAPSHOT<!--  --></applicationName>
+					<copyToAppsDirectory>true</copyToAppsDirectory>
 				</configuration>
+				<executions>
+					<execution>
+						<id>deploy</id>
+						<phase>deploy</phase>
+						<goals>
+							<goal>deploy</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
@@ -56,10 +111,11 @@
 					</execution>
 				</executions>
 			</plugin>
+			<!--  
 			<plugin>
 			    <groupId>org.mule.tools.appkit</groupId>
 			    <artifactId>mule-appkit-maven-plugin</artifactId>
-			    <version>3.4</version>
+			    <version>3.8</version>
 			    <extensions>true</extensions>
 			    <executions>
 			        <execution>
@@ -73,7 +129,7 @@
 			            </configuration>
 			        </execution>
 			    </executions>
-			</plugin>
+			</plugin>-->
 		</plugins>
 	</build>
 	
