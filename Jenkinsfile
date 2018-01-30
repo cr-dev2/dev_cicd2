@@ -29,5 +29,11 @@ pipeline {
         echo 'CloudHub Auto-Deploy Completed'
       }
     }
+	stage('Alerts & Notifications') {
+      steps {
+		echo 'Send Alert to Owner Starting'
+        echo 'Send Alert to Owner Completed'
+      }
+    }
   }
 }
