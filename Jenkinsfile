@@ -1,6 +1,11 @@
 pipeline {
   agent any
   stages {
+	stage('Auto Trigger') {
+      steps {
+        triggers { cron('H/1 * * * *') }
+      }
+    }
     stage('Checkout') {
       steps {
         checkout([$class: 'GitSCM', branches: [[name: '*/develop']],
