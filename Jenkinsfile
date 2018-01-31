@@ -35,7 +35,7 @@ pipeline {
 	 stage('Quality Gate'){
 	 steps {
 	 echo 'Quality Gate started'
-		def qg = waitForQualityGate()
+		waitForQualityGate()
 		echo 'Quality Gate Completed'
 		}
 	}
