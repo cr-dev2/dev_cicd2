@@ -22,6 +22,13 @@ pipeline {
         echo 'Tests are Completed'
       }
     }
+	stage('SonarQube Rules Execution') {
+		steps {
+			echo 'SonarQube Rules Execution started'
+			sh 'mvn sonar:sonar'
+			echo 'SonarQube Rules Execution Completed'
+		}
+	}
 	stage('Artifact Copy To Nexus')
 	{
 		steps{
