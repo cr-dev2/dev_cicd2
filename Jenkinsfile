@@ -25,7 +25,9 @@ pipeline {
 	stage('SonarQube Rules Execution') {
 		steps {
 			echo 'SonarQube Rules Execution started'
-			sh 'mvn sonar:sonar'
+			withSonarQubeEnv('SonarServer-Local') {
+				sh 'mvn sonar:sonar'
+			}
 			echo 'SonarQube Rules Execution Completed'
 		}
 	}
