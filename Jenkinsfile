@@ -32,16 +32,6 @@ pipeline {
 		}
 	}
 	
-	 stage('Quality Gate'){
-	 steps {
-	 echo 'Quality Gate started'
-		waitForQualityGate()
-		echo 'Quality Gate Completed'
-		}
-	}
-	
-	
-	
 	stage('Artifact Copy To Nexus')
 	{
 		steps{
