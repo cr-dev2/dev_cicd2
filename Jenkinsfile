@@ -22,6 +22,14 @@ pipeline {
         echo 'Tests are Completed'
       }
     }
+	stage('Artifact Copy To Nexus')
+	{
+		steps{
+			echo 'Artifact Copy to Nexus Started'
+			nexusArtifactUploader([nexusVersion: 'OSS 3.0.2-02'],[protocol:'http'],[nexusUrl:'http://52.209.36.199:8081/repository/maven-releases/'],[groupId:'com.mycompany'],[version:'1.0.0-SNAPSHOT'],[repository:'CICDREPO'],[credentialsId:'CostaPOCNexus'],[artifacts:'cicdeautodeployproj-1.0.0-SNAPSHOT.zip'],[artifactId:'cicdeautodeployproj'],[type:'zip'],[classifier:''],[file:'cicdeautodeployproj-1.0.0-SNAPSHOT.zip'])
+			echo 'Artifact Copy to Nexus Completed'
+		}
+	}	
 	stage('CloudHub Auto-Deploy') {
       steps {
 		echo 'CloudHub Auto-Deploy Starting'
@@ -31,8 +39,8 @@ pipeline {
     }
 	stage('Alerts & Notifications') {
       steps {
-		echo 'Send Alert to Owner Starting 02'
-        echo 'Send Alert to Owner Completed 02'
+		echo 'Send Alert to Owner Starting 03'
+        echo 'Send Alert to Owner Completed 03'
       }
     }
   }
