@@ -27,14 +27,21 @@ pipeline {
 			echo 'SonarQube Rules Execution started'
 			withSonarQubeEnv('SonarServer-Local') {
 				sh 'mvn sonar:sonar'
-				def qg = waitForQualityGate()
-				if (qg.status != 'OK') {
-                  error 'Pipeline aborted due to quality gate failure: ${qg.status}'
-              }
 			}
 			echo 'SonarQube Rules Execution Completed'
 		}
 	}
+	
+	 stage('Quality Gate'){
+		  timeout(time: 1, unit: 'HOURS') {
+			  def qg = waitForQualityGate()
+			  if (qg.status != 'OK') {
+				  error 'Pipeline aborted due to quality gate failure: ${qg.status}'
+			 }
+		 }
+	}
+	
+	
 	stage('Artifact Copy To Nexus')
 	{
 		steps{
