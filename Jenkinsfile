@@ -33,13 +33,13 @@ pipeline {
 	}
 	
 	 stage('Quality Gate'){
-		  timeout(time: 1, unit: 'HOURS') {
-			  def qg = waitForQualityGate()
-			  if (qg.status != 'OK') {
-				  error 'Pipeline aborted due to quality gate failure'
-			 }
-		 }
+	 steps {
+	 echo 'Quality Gate started'
+		def qg = waitForQualityGate()
+		echo 'Quality Gate Completed'
+		}
 	}
+	
 	
 	
 	stage('Artifact Copy To Nexus')
