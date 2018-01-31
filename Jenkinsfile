@@ -29,7 +29,7 @@ pipeline {
 			nexusArtifactUploader(
 				nexusVersion: 'nexus3',
 				protocol: 'http',
-				nexusUrl: 'http://52.209.36.199:8081/repository/maven-releases/',
+				nexusUrl: '52.209.36.199:8081',
 				groupId: 'com.mycompany',
 				version: '1.0.0-SNAPSHOT',
 				repository: 'CICDREPO',
