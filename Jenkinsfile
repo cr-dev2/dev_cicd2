@@ -32,7 +32,7 @@ pipeline {
 				nexusUrl: '52.209.36.199:8081',
 				groupId: 'com.mycompany',
 				version: '1.0.0-SNAPSHOT',
-				repository: 'CICDREPO',
+				repository: 'CICDREPO/',
 				credentialsId: 'CostaPOCNexus',
 				artifacts: [
 					[artifactId: 'cicdeautodeployproj',
