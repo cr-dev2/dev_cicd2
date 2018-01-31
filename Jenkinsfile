@@ -26,7 +26,7 @@ pipeline {
 	{
 		steps{
 			echo 'Artifact Copy to Nexus Started'
-			nexusArtifactUploader()						
+
 			echo 'Artifact Copy to Nexus Completed'
 		}
 	}
