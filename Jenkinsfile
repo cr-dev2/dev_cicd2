@@ -26,18 +26,20 @@ pipeline {
 	{
 		steps{
 			echo 'Artifact Copy to Nexus Started'
-			nexusArtifactUploader artifacts:[[
+			nexusArtifactUploader(
+				nexusVersion:'nexus3',			
+				protocol:'http',			
+				nexusUrl:'http://52.209.36.199:8081/repository/maven-releases/',
+				groupId:'com.mycompany',
+				version:'1.0.0-SNAPSHOT',
+				repository:'CICDREPO',
+				credentialsId:'CostaPOCNexus',
+				artifacts:[[
 				artifactId:'cicdeautodeployproj',
 				classifier:'',
 				file:'target/cicdeautodeployproj-1.0.0-SNAPSHOT.zip'
-				type:'zip',
-			]],
-			nexusVersion:'nexus3',			
-			protocol:'http',			nexusUrl:'http://52.209.36.199:8081/repository/maven-releases/',
-			groupId:'com.mycompany',
-			version:'1.0.0-SNAPSHOT',
-			repository:'CICDREPO',
-			credentialsId:'CostaPOCNexus'							
+				type:'zip'
+				]])						
 			echo 'Artifact Copy to Nexus Completed'
 		}
 	}
