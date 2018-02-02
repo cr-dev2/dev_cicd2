@@ -1,11 +1,19 @@
 pipeline {
   agent any
+  
+  parameters {
+	string(
+		name: 'Path',
+		defaultValue:'Bala',
+		description: 'Where to put the build!')
+    }
+  
   stages {
     stage('Checkout') {
       steps {
         checkout([$class: 'GitSCM', branches: [[name: '*/develop']],
                      userRemoteConfigs: [[credentialsId: '9d379816-40aa-43ff-9f6c-8015f4936219'],[url: 'https://github.com/cr-dev2/dev_cicd2.git']]])
-        echo 'Hello World'
+        echo 'Hello ${params.Path}'
       }
     }
     stage('Build') {
