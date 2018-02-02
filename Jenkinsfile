@@ -12,7 +12,7 @@ pipeline {
     stage('Checkout') {
       steps {
         checkout([$class: 'GitSCM', branches: [[name: '*/develop']],
-                     userRemoteConfigs: [[credentialsId: '9d379816-40aa-43ff-9f6c-8015f4936219'],[url: 'https://github.com/cr-dev2/dev_cicd2.git']]])
+                     userRemoteConfigs: [[credentialsId: 'f1a093d8-cb3d-467a-b0f3-670289e8bc6e'],[url: 'https://github.com/cr-dev2/dev_cicd2.git']]])
         echo 'Hello '
       }
     }
