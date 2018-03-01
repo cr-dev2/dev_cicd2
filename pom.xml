@@ -28,6 +28,7 @@
 				<version>4.6.1</version>
 				<configuration>
 					<projectFile>REST-Project-1-readyapi-project.xml</projectFile>
+					<projectFile>REST-Project-1-readyapi-project_no_lic.xml</projectFile>
 					<projectProperties>
 						<value>message=Hello World!</value>
 					</projectProperties>
